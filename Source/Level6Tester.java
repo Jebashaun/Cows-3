@@ -268,14 +268,17 @@ public class Level6Tester
         bob = new Robot(leftLeg, rightLeg, body, leftArm, rightArm, head, rightEye, leftEye, mouth);
 
         bob.swivelArms();
-        if(leftArm.getY() != 130 || rightArm.getY() != 130 || leftArm.getHeight() != 150 || leftArm.getHeight() != 150){
+        if(leftArm.getY() != 130 || rightArm.getY() != 130 || leftArm.getHeight() != 150 || rightArm.getHeight() != 150){
             success = false;
+            System.out.println(leftArm.getY() + ", " + rightArm.getY() + ", " + leftArm.getHeight() + ", " + rightArm.getHeight());
             System.out.println("swivelArms is not working properly");
         }
         
         bob.swivelArms();
-        if(leftArm.getY() != 260 || rightArm.getY() != 260 || leftArm.getHeight() != 150 || leftArm.getHeight() != 150){
+        if(leftArm.getY() != 260 || rightArm.getY() != 260 || leftArm.getHeight() != 150 || rightArm.getHeight() != 150){
             success = false;
+            System.out.println(leftArm.getY() + ", " + rightArm.getY() + ", " + leftArm.getHeight() + ", " + rightArm.getHeight());
+    
             System.out.println("swivelArms is not working properly");
         }
         

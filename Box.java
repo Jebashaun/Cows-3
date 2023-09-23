@@ -4,6 +4,7 @@ public class Box {
   private int x, y;
   private Color theColor;
   private int width, height;
+  private boolean isOn;
 
   public Box(int x, int y, Color theColor, int width, int height){
     this.x = x;
@@ -11,6 +12,7 @@ public class Box {
     this.theColor = theColor;
     this.width = width;
     this.height = height;
+    isOn = false;
   }
 
   public int getX(){
@@ -62,33 +64,39 @@ public class Box {
     this.y = y;
   }
 
+  
+  public void stretchLeft(int amount){
+    x -= amount;
+    width += amount;
+  }
   public void stretchRight(int amount){
+    x += amount;
     width += amount;
   }
   
-  public void stretchLeft(int amount){
-    width -= amount;
+  public void stretchUp(int amount){
+    y -= amount;
+    height += amount;
   }
-
   public void stretchDown(int amount){
+    y += amount;
     height += amount;
   }
   
-  public void stretchUp(int amount){
-    height -= amount;
-  }
-  
   public void stretch(int amount){
-    
+    x -= amount;
+    y -= amount;
+    width += 2 * amount;
+    height += 2 * amount;
   }
 
   public boolean equals(Box otherBox){
-    return width == otherBox.getWidth() && height == otherBox.getHeight();
+    return (width == otherBox.getWidth()) && (height == otherBox.getHeight());
       
   }
 
   public int compareTo(Box otherBox){
-    if (equals(otherBox)) { return 0; }
+    if (width * height == otherBox.getWidth() * otherBox.getHeight()) { return 0; }
     if (width * height > otherBox.getHeight() * otherBox.getWidth()){
       return 1;
     } else {
@@ -98,19 +106,24 @@ public class Box {
   }
 
   public void turnOn(){
-
+    isOn = true;
   }
 
   public void turnOff(){
-
+    isOn = false;
   }
 
   public boolean getIsOn(){
-    return true;
+    return isOn;
   }
+  
 
   public void paint(Graphics g){
     g.setColor(theColor);
+    if (!isOn){ g.setColor(Color.BLACK); }
     g.fillRect(x, y, width, height);
+    ((Graphics2D)g).setStroke(new BasicStroke(5));
+    g.drawRect(x, y, width, height);
+    
   }
 }

@@ -1,12 +1,12 @@
-import java.util.jar.Attributes.Name;
+// import java.util.jar.Attributes.Name;
 
 public class Person {
   Name theName;
   MyDate birthDay;
   int socialSecurityNumber;
 
-  public Person(Name theName, MyDate birthDay, int socialSecurityNumber){
-    this.theName = theName;
+  public Person(Name name2, MyDate birthDay, int socialSecurityNumber){
+    theName = name2;
     this.birthDay = birthDay;
     this.socialSecurityNumber = socialSecurityNumber;
   }
@@ -34,6 +34,6 @@ public class Person {
   }
 
   public int compareTo(Person otherPerson){
-    return 0;
+    return theName.compareTo(otherPerson.getName());
   }
 }

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.*;
 
 public class Level5Tester
 {
@@ -17,20 +18,20 @@ public class Level5Tester
             return false;
         }
     }
-    
+
     public static boolean testAddress(){
         Address [] addresses = new Address [6];
 
         addresses[0] = new Address(1234, "Milky Way Lane", "Sterling", "VA", 20165, "USA");
 
         addresses[1] = new Address(986, "Glowood Drive", "Pittsburgh", "PA", 15227, "USA");
-        
+
         addresses[2] = new Address(1235, "Milky Way Lane", "Sterling", "VA", 20165, "USA");
-        
+
         addresses[3] = new Address(1234, "Milky Way Road", "Sterling", "VA", 20165, "USA");
-        
+
         addresses[4] = new Address(1234, "Milky Way Lane", "Sterling", "MD", 34157, "USA");
-        
+
         addresses[5] = new Address(1234, "Milky Way Lane", "Sterling", "VA", 20165, "USA");
 
         boolean success = true;
@@ -94,10 +95,10 @@ public class Level5Tester
         return success;
 
     }
-    
+
     public static boolean testDigit(){
         boolean success = true;
-        
+
         Digit [] theDigits = new Digit[10];
         for(int i = 0; i < theDigits.length; i++){
             Box top = new Box(20, 0, Color.GREEN, 80, 20);
@@ -110,7 +111,7 @@ public class Level5Tester
             theDigits[i] = new Digit(i, top, middle, bottom, upperRight, lowerRight, upperLeft, lowerLeft);
             theDigits[i].updateDisplay();
         }
-        
+
         boolean [][] values = { {true, false, true, true, true, true, true},
                                 {false, false, false, true, true, false, false},
                                 {true, true, true, true, false, false, true},
@@ -123,7 +124,7 @@ public class Level5Tester
                                 {true, true, false, true, true, true, false}
                               };
         String [] descriptions = {"Top", "Middle", "Bottom", "Upper Right", "Lower Right", "Upper Left", "Lower Left"};
-        
+
         for(int i = 0; i < theDigits.length; i++){
             for(int i2 = 0; i2 < descriptions.length; i2++){
                 if(theDigits[i].getBar(descriptions[i2]).getIsOn() != values[i][i2]){
@@ -132,13 +133,13 @@ public class Level5Tester
                 }
             }
         }
-        
+
         if(success){
             System.out.println("Digit works for Level 5");
         }else{
             System.out.println("Digit does NOT work for Level 5");
         }
-        
+
         return success;
     }
 }
